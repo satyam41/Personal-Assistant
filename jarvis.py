@@ -28,10 +28,13 @@ def wishMe():
     elif hour>=18 and hour<20:
         speak("Good evening sir.")
     
+
     else:
         speak("Good night sir.")
-    
+
     speak("I am your Personal Assistant. How may I help you?")
+    if datetime.date(2021,6,26) == datetime.date.today():
+        speak("Happy Birthday sir")
     # speak("My name is Jayanti Hari")
 
 def takeCmd():
@@ -169,8 +172,6 @@ if __name__ == "__main__":
         
         elif "what is my date of birth" in query:
             speak("Sir your date of birth is 26 June")
-            if datetime.date(2021,6,26) == datetime.date.today():
-                speak("Happy Birthday to sir")
         
         elif "when you launch" in query:
             speak("17 March 2021")
