@@ -35,6 +35,24 @@ def wishMe():
     speak("I am your Personal Assistant. How may I help you?")
     if datetime.date(2021,6,26) == datetime.date.today():
         speak("Happy Birthday sir")
+    
+    elif datetime.date(2021,3,29) == datetime.date.today():
+        speak("Happy Holy sir.")
+    
+    elif datetime.date(2021,8,15) == datetime.date.today():
+        speak("Happy Independence Day sir")
+
+    elif datetime.date(2021,10,15) == datetime.date.today():
+        speak("Happy Dussehra sir")
+    
+    elif datetime.date(2021,11,4) == datetime.date.today():
+        speak("Happy Diwali sir")
+    
+    elif datetime.date(2021,11,10) == datetime.date.today():
+        speak("Happy Chhat puja sir.")
+    
+    elif datetime.date(2022,1,26) == datetime.date.today():
+        speak("Happy Republic day sir")
     # speak("My name is Jayanti Hari")
 
 def takeCmd():
@@ -88,6 +106,10 @@ if __name__ == "__main__":
         elif "play online music" in query:
             webbrowser.open("music.youtube.com")
             speak("playing some music on YouTube music")
+        
+        elif "play dil chahte ho" in query:
+            webbrowser.open("https://music.youtube.com/watch?v=0ApQaG8wNsU&list=RDAMVM0ApQaG8wNsU")
+            speak("dil chahte to by Jubin Nauyiyal and Payal Dev, Sure. Playing on youtube music.")
 
         elif "open google" in query:
             googlePath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome_proxy.exe"
@@ -175,6 +197,28 @@ if __name__ == "__main__":
         
         elif "when you launch" in query:
             speak("17 March 2021")
+
+        elif "hi" in query:
+            speakList = ["Hi sir", "Namaste, how can I help?"]
+        
+        elif "tell me a joke" in query:
+            listOfJoke = ["Why did the tomato blush?\nBecause it saw the salad dressing"]
+            try:
+                randomJokes = random.randint(0,len(listOfJoke)-1)
+                print(listOfJoke[randomJokes])
+                speak(listOfJoke[randomJokes])
+            except:
+                pass
+        
+        elif "one more" in query:
+            speak("Here we go")
+            joke = ["Why don't some couples go to the gym?\nBecause some relationship don't work out.", "What movie does the hopeless clock watch?\nKal Ho Naa Ho", "What do you call a rose that wants to go to moon?\nGulab ja Moon", "What do you call a dinosaur that cannot see?\nA Do-you-think-he-saurus.", "I love how in horror movie the person call out, 'Hello?'\nAs if the ghost will answer, 'Hey what's up, I am in the kitchen. Want a Sandwich.'"]
+            try:
+                randomJoke = random.randint(0,len(joke)-1)
+                print(joke[randomJoke])
+                speak(joke[randomJoke])
+            except:
+                pass
 
         elif "go to sleep" in query:
             speak("Ok Sir. I am wating for your next response.")
