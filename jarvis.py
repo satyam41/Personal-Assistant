@@ -25,9 +25,8 @@ def wishMe():
     elif hour>=12 and hour<18:
         speak("Good afternoon sir.")
     
-    elif hour>=18 and hour<20:
+    elif hour>=18 and hour<=20:
         speak("Good evening sir.")
-    
 
     else:
         speak("Good night sir.")
