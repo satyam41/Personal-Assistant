@@ -1,5 +1,6 @@
 import datetime
 import pyttsx3
+import random
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -70,6 +71,15 @@ if __name__ == "__main__":
         elif "when my birthday is come" in query:
             print("26th June")
             speak("26th June")
+        
+        elif "hello" in query:
+            lst = ["Hello sir", "Namaste sir, I am doing well sir."]
+            try:
+                rand = random.randint(0,len(lst)-1)
+                print(lst[rand])
+                speak(lst[rand])
+            except:
+                pass
         
         elif "quit" in query:
             print("Thank you sir for talking with me")

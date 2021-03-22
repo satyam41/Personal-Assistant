@@ -128,7 +128,7 @@ if __name__ == "__main__":
             songs = os.listdir(music_dir)
             musicNumber = random.randint(0,len(songs))    
             os.startfile(os.path.join(music_dir, songs[musicNumber]))
-            speak("playing music")
+            speak("playing music on groove music")
         
         elif "the time" in query:
             strTime = datetime.datetime.now().strftime("%H:%M")
@@ -197,8 +197,13 @@ if __name__ == "__main__":
         elif "when you launch" in query:
             speak("17 March 2021")
 
-        elif "hi" in query:
+        elif "hello" in query:
             speakList = ["Hi sir", "Namaste, how can I help?"]
+            try:
+                randomspeak = random.randint(0,len(speakList)-1)
+                speak(speakList[randomspeak])
+            except:
+                pass
         
         elif "tell me a joke" in query:
             listOfJoke = ["Why did the tomato blush?\nBecause it saw the salad dressing"]
