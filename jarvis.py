@@ -31,7 +31,7 @@ def wishMe():
     else:
         speak("Good night sir.")
 
-    speak("I am your Personal Assistant. How may I help you?")
+    speak("I am Zira your Personal Assistant. How may I help you?")
     if datetime.date(2021,6,26) == datetime.date.today():
         speak("Happy Birthday sir")
     
@@ -126,9 +126,9 @@ if __name__ == "__main__":
         elif "play music" in query:
             music_dir = "C:\\Users\\hp\\Music"
             songs = os.listdir(music_dir)
-            musicNumber = random.randint(0,len(songs))    
+            musicNumber = random.randint(0,len(songs))  
             os.startfile(os.path.join(music_dir, songs[musicNumber]))
-            speak("playing music on groove music")
+            speak("playing music"+ songs[musicNumber])
         
         elif "the time" in query:
             strTime = datetime.datetime.now().strftime("%H:%M")
@@ -166,16 +166,20 @@ if __name__ == "__main__":
 
         elif "change your voice" in query:
             engine.setProperty('voice', voices[0].id)
-            speak("Thank you for choose me for as your personal assistant. How may I help you?")
+            speak("Thank you for choose me for as your personal assistant. i am David. How may I help you?")
         
+        elif "change the voice" in query:
+            engine.setProperty('voice',voices[1].id)
+            speak("Thank you for choose me for as your personal assistant. i am Zira. How may I help you?")
+
         elif "how are you" in query:
-            speak("I am fine. thank you for asking me")
+            speak("I am fine. thank you for asking me. how are you?")
         
         elif "marry me" in query:
             speak("I am a robot so I can not marry with you.")
         
         elif "what is your name" in query:
-            lst = ["My name is Zira.","you can know because you have developed me."]
+            lst = ["My name is Zira.","you can know because you have developed me.", "My name is David."]
             try:
                 rand = random.randint(0,len(lst)-1)
                 speak(lst[rand])
@@ -198,29 +202,10 @@ if __name__ == "__main__":
             speak("17 March 2021")
 
         elif "hello" in query:
-            speakList = ["Hi sir", "Namaste, how can I help?"]
+            speakList = ["Hi sir", "Namaste, how can I help?", "Radhe-Krishna", "Sita-Ram", "Ram-Ram"]
             try:
                 randomspeak = random.randint(0,len(speakList)-1)
                 speak(speakList[randomspeak])
-            except:
-                pass
-        
-        elif "tell me a joke" in query:
-            listOfJoke = ["Why did the tomato blush?\nBecause it saw the salad dressing"]
-            try:
-                randomJokes = random.randint(0,len(listOfJoke)-1)
-                print(listOfJoke[randomJokes])
-                speak(listOfJoke[randomJokes])
-            except:
-                pass
-        
-        elif "one more" in query:
-            speak("Here we go")
-            joke = ["Why don't some couples go to the gym?\nBecause some relationship don't work out.", "What movie does the hopeless clock watch?\nKal Ho Naa Ho", "What do you call a rose that wants to go to moon?\nGulab ja Moon", "What do you call a dinosaur that cannot see?\nA Do-you-think-he-saurus.", "I love how in horror movie the person call out, 'Hello?'\nAs if the ghost will answer, 'Hey what's up, I am in the kitchen. Want a Sandwich.'"]
-            try:
-                randomJoke = random.randint(0,len(joke)-1)
-                print(joke[randomJoke])
-                speak(joke[randomJoke])
             except:
                 pass
 
