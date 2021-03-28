@@ -1,6 +1,8 @@
 import datetime
 import pyttsx3
 import random
+import os
+import webbrowser
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -80,6 +82,19 @@ if __name__ == "__main__":
                 speak(lst[rand])
             except:
                 pass
+        
+        elif "play music" in query:
+            music_dir = "C:\\Users\\hp\\Music"
+            songs = os.listdir(music_dir)
+            musicNumber = random.randint(0,len(songs))  
+            os.startfile(os.path.join(music_dir, songs[musicNumber]))
+            print("playing music "+ songs[musicNumber])
+            speak("playing music "+ songs[musicNumber])
+        
+        elif "play online music" in query:
+            webbrowser.open("music.youtube.com")
+            print("playing some music on YouTube music")
+            speak("playing some music on YouTube music")
         
         elif "quit" in query:
             print("Thank you sir for talking with me")
