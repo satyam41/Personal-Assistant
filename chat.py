@@ -50,7 +50,13 @@ if __name__ == "__main__":
     wishMe()
     while True:
         query = takeAnswer().lower()
-        if "hi" in query:
+
+        if "no" in query:
+            print("Ok sir we talk later")
+            speak("Ok sir we talk later")
+            break
+
+        elif "hi" in query:
             print("Hello Sir")
             speak("Hello Sir")
         
