@@ -9,8 +9,8 @@ import calendar
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
-print(voices[2])
-engine.setProperty('voice', voices[2].id)
+# print(voices[0])
+engine.setProperty('voice', voices[1].id)
 
 def speak(audio):
     engine.say(audio)
