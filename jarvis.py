@@ -91,7 +91,7 @@ if __name__ == "__main__":
             speak(results)
 
         elif "open youtube" in query:
-            webbrowser.open("youtube.com")
+            webbrowser.open("https://www.youtube.com/")
             speak("Opening youtube")
 
         elif "play ram siya ram" in query:
