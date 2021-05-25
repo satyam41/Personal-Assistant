@@ -152,6 +152,16 @@ if __name__ == "__main__":
             os.startfile(codePath)
             speak("Opening VS Code")
 
+        elif "open pycharm" in query:
+            pathOfCode = "C:\\Program Files\\JetBrains\\PyCharm Community Edition 2021.1\\bin\\pycharm64.exe"
+            os.startfile(pathOfCode)
+            speak("Opening PyCharm")
+
+        elif "open intell jdea" in query:
+            intelljpath = "C:\\Program Files\\JetBrains\\IntelliJ IDEA Community Edition 2021.1.1\\bin\\idea64.exe"
+            os.startfile(intelljpath)
+            speak("Opening Intell JDEA")
+
         elif "open studio" in query:
             obsPath = "C:\\Program Files\\obs-studio\\bin\\64bit\\obs64.exe"
             os.startfile(obsPath)
