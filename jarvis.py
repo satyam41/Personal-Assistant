@@ -6,6 +6,7 @@ import webbrowser
 import os
 import random
 import calendar
+import WishList
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -33,31 +34,10 @@ def wishMe():
     else:
         speak("Good night sir.")
 
-    if datetime.date(2021, 6, 26) == datetime.date.today():
-        webbrowser.open("https://music.youtube.com/watch?v=pk21s6tUjGY&list=RDAMVMpk21s6tUjGY")
+    WishList.specialDay()
 
-    elif datetime.date(2021, 3, 29) == datetime.date.today():
-        speak("Happy Holy sir.")
-
-    elif datetime.date(2021, 8, 15) == datetime.date.today():
-        speak("Happy Independence Day sir")
-
-    elif datetime.date(2021, 10, 15) == datetime.date.today():
-        speak("Happy Dussehra sir")
-
-    elif datetime.date(2021, 11, 4) == datetime.date.today():
-        speak("Happy Diwali sir")
-
-    elif datetime.date(2021, 11, 10) == datetime.date.today():
-        speak("Happy Chhat puja sir.")
-
-    elif datetime.date(2022, 1, 26) == datetime.date.today():
-        speak("Happy Republic day sir")
-
-    # elif datetime.date(2021, 6, 2) == datetime.date.today():
-    #     webbrowser.open("https://music.youtube.com/watch?v=pk21s6tUjGY&list=RDAMVMpk21s6tUjGY")
-    # speak("My name is Jayanti Hari")
     speak("I am Zira your Personal Assistant. How may I help you?")
+
 
 def takeCmd():
     """
@@ -145,13 +125,13 @@ if __name__ == "__main__":
             speak(f"Sir, The date is {strDate}")
 
         elif "the day" in query:
-            def findDay(date):
+            def findDay():
                 day = datetime.date.today().weekday()
-                return (calendar.day_name[day])
+                return calendar.day_name[day]
 
 
             date = datetime.date.today()
-            weekDay = findDay(date)
+            weekDay = findDay()
             print(f"{weekDay} Sir")
             speak(f"{weekDay} Sir")
 
