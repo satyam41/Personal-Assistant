@@ -1,4 +1,5 @@
 import pyttsx3
+import requests
 import speech_recognition as sr
 import datetime
 import wikipedia
@@ -7,6 +8,9 @@ import os
 import random
 import calendar
 import WishList
+from requests import get
+import pywhatkit as kit
+import sys
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -16,6 +20,7 @@ engine.setProperty('voice', voices[1].id)
 
 def speak(audio):
     engine.say(audio)
+    print(audio)
     engine.runAndWait()
 
 
@@ -61,10 +66,13 @@ def takeCmd():
         return "None"
     return query
 
+def taskEse():
+    pass
 
 if __name__ == "__main__":
     wishMe()
     while True:
+        # if 1:
         query = takeCmd().lower()
 
         # logic to executing task based on query.
@@ -73,32 +81,53 @@ if __name__ == "__main__":
             query = query.replace("Wikipedia", "")
             results = wikipedia.summary(query, sentences=2)
             speak("According to wikipedia")
-            print(results)
             speak(results)
+
+        elif "where i am" in query or "where we are" in query:
+            speak("wait sir, let me check")
+            try:
+                ipadd = requests.get('https://api.ipify.org').text
+                # print(ipadd)
+                url = 'https://get.geojs.io/v1/ip/geo/'+ipadd+'.json'
+                geo_request = requests.get(url)
+                geo_data = geo_request.json()
+                city = geo_data['city']
+                state = geo_data['state']
+                country = geo_data['country']
+                speak(f"Sir, I am not sure, but I think we are in {city} city of {state} and the country is {country}")
+            except Exception as e:
+                speak("Sorry sir, due to network issue I am not able to find where we are.")
+                pass
+
+        elif "open notepad" in query:
+            npath = "C:\\WINDOWS\\system32\\notepad.exe"
+            os.startfile(npath)
+            speak("Opening notepad fou you")
+
+        elif "open command prompt" in query:
+            os.system("start cmd")
+            speak("opening command prompt for you")
 
         elif "open youtube" in query:
             webbrowser.open("https://www.youtube.com/")
             speak("Opening youtube")
 
-        elif "play ram siya ram" in query:
-            webbrowser.open("https://music.youtube.com/watch?v=iqpUko_ceN0&list=RDAMVMiqpUko_ceN0")
-            speak("ram siya ram by Sachet Tandon, Sure. Playing on YouTube Music")
-
-        elif "play friend" in query:
-            webbrowser.open("https://music.youtube.com/watch?v=X-x7eZOdBFM&list=RDAMVMX-x7eZOdBFM")
-            speak("FRIENDS by Anne-Marie,Sure. Playing on youtube music")
-
         elif "play online music" in query:
-            webbrowser.open("https://music.youtube.com/")
-            speak("playing some music on YouTube music")
+            text = "Sir, Which song you want to listen"
+            speak(text)
+            scm = takeCmd().lower()
+            kit.playonyt(scm)
 
-        elif "play 2002" in query:
-            webbrowser.open("https://music.youtube.com/watch?v=ee2mcqcGL_c&list=RDAMVMee2mcqcGL_c")
-            speak("2002 by Anne-Marie, Sure. Playing on youtube music.")
+        elif "ip address" in query:
+            ip = get("https://api.ipify.org").text
+            ipAd = f"Your IP address is {ip}"
+            speak(ipAd)
 
         elif "open google" in query:
             googlePath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome_proxy.exe"
-            os.startfile(googlePath)
+            speak("Sir, What should i search on google")
+            cm = takeCmd().lower()
+            webbrowser.open(cm)
             speak("Opening google")
 
         elif "open facebook" in query:
@@ -162,54 +191,14 @@ if __name__ == "__main__":
             os.startfile(os.path.join(photoPath, photo[pic]))
             speak("Opening photo")
 
-        elif "change the voice" in query:
-            engine.setProperty('voice', voices[0].id)
-            speak("Thank you for choose me for as your personal assistant. i am David. How may I help you?")
-
-        elif "change it again" in query:
-            engine.setProperty('voice', voices[1].id)
-            speak("Thank you for choose me for as your personal assistant. i am Zira. How may I help you?")
-
-        elif "how are you" in query:
-            speak("I am fine. thank you for asking me. how are you?")
-
-        elif "marry me" in query:
-            speak("I am a robot so I can not marry with you.")
-
-        elif "what is your name" in query:
-            lst = ["My name is Zira.", "you can know because you have developed me.", "My name is David."]
-            try:
-                rand = random.randint(0, len(lst) - 1)
-                speak(lst[rand])
-            except:
-                pass
-
-        elif "i am fine" in query:
-            speak("Ok sir I wish for your good health.")
-
-        elif "who developed you" in query:
-            speak("You have develop me. Thank you for developing me as your personal assistant.")
-
-        elif "what is my name" in query:
-            speak("Your name is Satyam and you are my inventor.")
-
         elif "what is my date of birth" in query:
             speak("Sir your date of birth is 26 June")
 
         elif "when you launch" in query:
             speak("17 March 2021")
 
-        elif "hello" in query:
-            speakList = ["Hi sir", "Namaste, how can I help?", "Radhe-Krishna", "Sita-Ram", "Ram-Ram"]
-            try:
-                randomspeak = random.randint(0, len(speakList) - 1)
-                speak(speakList[randomspeak])
-            except:
-                pass
+        elif "no thanks" in query:
+            speak("Thanks for using me sir have a nice day.")
+            sys.exit()
 
-        elif "thank you" in query:
-            speak("Welcome sir its my pleasure.")
-
-        elif "go to sleep" in query:
-            speak("Ok Sir. I am waiting for your next response.")
-            break
+        speak("Sir, do you have any other work for me.....")
