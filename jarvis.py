@@ -23,7 +23,6 @@ voices = engine.getProperty('voices')
 # print(voices[0])
 engine.setProperty('voice', voices[0].id)
 
-
 # engine.setProperty('rate', 170)
 
 
@@ -157,6 +156,9 @@ def TaskExecution():
 
             elif "open youtube" in query:
                 webbrowser.open("https://www.youtube.com/")
+                speak("Sir, What should I search on YouTube.")
+                yt = takeCmd()
+                webbrowser.open(yt)
                 speak("Opening youtube")
 
             elif "play online music" in query:
